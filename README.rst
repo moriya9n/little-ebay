@@ -8,29 +8,37 @@ Overview
 little-ebay is possibly the lightest auction system ever. Built on top of Django, little-ebay will provide you with the basic functionality of an auction site.
 Register, bid, buy, sell and track items on little-ebay. 
 
-Requirements
-============
-1. `django-uni-form <http://github.com/pydanny/django-uni-form>`_
-2. `jQuery <http://jquery.com/>`_
-3. `TinyMCE <http://tinymce.moxiecode.com/>`_
-4. `jQuery Countdown <http://keith-wood.name/countdown.html>`_
-
 Installation
 ============
-1. Install django-uni-form 
-2. Include 'uni_form' and 'lebay.apps.lebay' in your django application set. 
+example installation on FreeBSD 8.3
+
+#. pkg_add -r python
+#. pkg_add -r apache22
+#. pkg_add -r ap22-mod_wsgi
+#. pkg_add -r py27-sqlite3
+#. pkg_add -r py27-virtualenv
+#. virtualenv /usr/local/www/pythonenv
+#. ln -s /usr/local/lib/python2.7/site-packages/_sqlite3.so /usr/local/www/pythonenv/lib/python2.7/site-packages/
+#. source /usr/local/www/pythonenv/bin/activate.csh
+#. pip install django
+#. pip install pytz
+#. pip install django-crispy-forms
+#. mkdir /usr/local/www/auction_site
+#. cp -r lebay /usr/local/www/auction_site
+#. cp -r auction_site /usr/local/www/auction_site
+#. add email address in settings.py
+#. cd /usr/local/www/auction_site; python manage.py syncdb; python manage.py collectstatic
+#. chown -R www:www /usr/local/www/auction_site
+#. cp httpd-auction.conf /usr/local/etc/apache22/Includes
+#. restart apache (/usr/local/etc/rc.d/apache22 start)
 
 Usage
 =====
-1. To run the example application: complete installation, synchronize database and use runserver.
-2. Create a few item categories from admin.
-3. To include in your own application, follow deployment demonstrated in the example application.
+Create a few item categories from admin.
 
 More
 ====
-
-The primary repository for Little-eBay is located at:
-
-`http://github.com/tarequeh/little-ebay/ <http://github.com/tarequeh/little-ebay/>`_
-
 Little-eBay was created by Tareque Hossain
+
+for django 1.4 and django-crispy-forms, modified by Seiji Moriya. (moriya9n@gmail.com)
+
